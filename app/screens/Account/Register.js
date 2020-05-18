@@ -14,7 +14,7 @@ export default function Register() {
                 style={styles.logo}
             />
             <View style={styles.viewForm}>
-            <RegisterForm toastRef ={toastRef} />
+            <RegisterForm toastRef={toastRef} />
             </View>
             <Toast ref={toastRef} position="center" opacity={0.9} />
         </KeyboardAwareScrollView>

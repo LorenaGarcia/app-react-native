@@ -6,6 +6,7 @@ import AddRestaurant from "../screens/Restaurants/AddRestaurant"
 const Stack = createStackNavigator()
 
 export default function RestaurantsStack() {
+
     return (
         <Stack.Navigator>
             <Stack.Screen
