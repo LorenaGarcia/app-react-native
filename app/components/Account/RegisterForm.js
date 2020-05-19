@@ -16,7 +16,6 @@ export default function RegisterForm(props) {
     const navigation = useNavigation()
     
     const onSubmit = () => {
-        console.log(formData)
         if(isEmpty(formData.email) || isEmpty(formData.password) || isEmpty(formData.repeatPassword)){
             toastRef.current.show('Todos los campos son obligatorios')
         } else if(!validateEmail(formData.email)) {
