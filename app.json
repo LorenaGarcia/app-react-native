@@ -25,6 +25,12 @@
       "supportsTablet": false
     },
     "android": {
+      "package": "com.lorranegarciareyes.myrecipebook",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDzMXzlxRxpa7vkH-uva91cllXUxH02cwo"
+        }
+      },
       "permissions": ["CAMERA_ROLL", "READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE", "LOCATION", "ACCESS_COARSE_LOCATION", "ACCESS_FINE_LOCATION"]
     }
   }
