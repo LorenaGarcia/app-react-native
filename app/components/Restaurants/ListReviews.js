@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useCallback } from "react"
 import { useFocusEffect } from "@react-navigation/native"
 import { StyleSheet, Text, View } from "react-native"
 import { Button, Avatar, Rating } from "react-native-elements"
