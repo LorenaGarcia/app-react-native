@@ -57,7 +57,7 @@ export default function ChangeEmailForm (props) {
     return (
         <View style={styles.view}>
             <Input 
-                placeholder="Correo electronico"
+                placeholder="Correo electrónico"
                 containerStyle={styles.input}
                 defaultValue={email || ""}
                 rightIcon={{

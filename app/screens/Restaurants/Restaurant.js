@@ -112,7 +112,7 @@ export default function Restaurant(props) {
                             type="material-community"
                             name={isFavorite ? "heart" : "heart-outline"}
                             onPress={isFavorite ? removeFavorite : addFavorite}
-                            color={isFavorite ? "#f00" : "#000"}
+                            color={isFavorite ? "rgba(240, 29, 73, 0.7)" : "#000"}
                             size={30}
                             underlayColor="transparent"
                         />
@@ -126,6 +126,7 @@ export default function Restaurant(props) {
             </SafeAreaView>
             <TitleRestaurant
                 name={restaurant.name}
+                restaurantName={restaurant.restaurantName}
                 description={restaurant.description}
                 rating={rating}
             />
@@ -144,7 +145,7 @@ export default function Restaurant(props) {
 }
 
 function TitleRestaurant(props) {
-    const { name, description, rating } = props
+    const { name, description, rating, restaurantName } = props
 
     return (
         <View style={styles.viewRestaurantTitle}>
@@ -156,6 +157,15 @@ function TitleRestaurant(props) {
                     readonly
                     startingValue={parseFloat(rating)}
                 />
+            </View>
+            <View style={styles.containerIcon}>
+                    <Icon
+                        type="material-community"
+                        name="silverware-fork-knife"
+                        color='grey'
+                        size={20}
+                    />
+                    <Text style={styles.restaurantName}>{'  '}{restaurantName}</Text>
             </View>
         <Text style={styles.descriptionRestaurant}>{description}</Text>
         </View>
@@ -177,7 +187,7 @@ function RestaurantInfo(props) {
     return (
         <View style={styles.viewRestaurantInfo}>
             <Text style={styles.restaurantInfoTitle}>
-                Información sobre el restaurante
+                Dirección del restaurante
             </Text>
             <Map
                 location={location}
@@ -212,6 +222,13 @@ const styles= StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold",
     },
+    containerIcon: {
+        flexDirection: "row",
+        marginTop: 5,
+    },
+    restaurantName: {
+        fontSize: 15,
+     },
     descriptionRestaurant: {
        marginTop: 5,
        color: "grey"
@@ -238,7 +255,7 @@ const styles= StyleSheet.create({
        top: 0,
        right: 0,
        zIndex: 2,
-       backgroundColor: "#fff",
+       backgroundColor: "rgba(253, 253, 253, 0.8)",
        borderBottomLeftRadius: 100,
        padding: 5,
        paddingLeft: 15

@@ -24,7 +24,7 @@ export default function ListTopRestaurants(props) {
 
 function Restaurant(props) {
     const { restaurant, navigation } = props
-    const { name, rating, images, description, id } = restaurant.item
+    const { name, rating, images, restaurantName, address, id } = restaurant.item
     const [iconColor, setIconColor] = useState("#000")
 
     useEffect(() => {
@@ -65,7 +65,26 @@ function Restaurant(props) {
                     readonly
                 />
                 </View>
-                <Text style={styles.description}>{description}</Text>
+                <View style={styles.iconText}>
+                    <Icon
+                        type="material-community"
+                        name="silverware-fork-knife"
+                        color='grey'
+                        size={20}
+                    />
+                    <Text style={styles.description}>{'  '}{restaurantName}</Text>
+                </View>
+                
+                <View style={styles.iconText}>
+                    <Icon
+                        type="material-community"
+                        name="map-marker"
+                        color='grey'
+                        size={20}
+                    />
+                    <Text style={styles.address}>{'  '}{address}</Text>
+                </View>
+                
             </Card>
         </TouchableOpacity>
     )
@@ -95,9 +114,15 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: "bold"
     },
+    iconText: {
+        flexDirection: "row"
+    },
     description: {
         color: "grey",
         marginTop: 0,
         textAlign: "justify"
+    },
+    address: {
+        color: "grey",
     }
 })

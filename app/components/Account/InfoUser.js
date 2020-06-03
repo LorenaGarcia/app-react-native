@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
     },
     displayName: {
         fontWeight: "bold",
+        fontSize: 25,
         paddingBottom: 5,
     }
 })

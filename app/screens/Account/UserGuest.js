@@ -15,7 +15,7 @@ export default function UserGuest() {
             />
             <Text style={styles.title}>Consulta tu perfil</Text>
             <Text style={styles.description}>
-                ¿Como describirias tu mejor restaurante? Busca y visualiza los mejores restaurantes de una forma sencilla, vota cual te ha gustado más y comenta como ha sido tu experiencia.
+                ¿Como describirias tu platillo favorito? Busca y visualiza los mejores platillos de algunos restaurantes de una forma sencilla, vota cual te ha gustado más y comenta como ha sido tu experiencia.
             </Text>
             <View style={styles.viewBtn}>
                 <Button

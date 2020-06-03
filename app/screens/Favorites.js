@@ -75,6 +75,8 @@ export default function Favorites(props) {
     return <NotFoundRestaurants />;
   }
 
+  
+
   return (
     <View style={styles.viewBody}>
       {restaurants ? (
@@ -108,7 +110,7 @@ function NotFoundRestaurants() {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       <Icon type="material-community" name="alert-outline" size={50} />
       <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-        No tienes restaurantes en tu lista
+        No tienes platillos en tu lista
       </Text>
     </View>
   );
@@ -118,15 +120,20 @@ function UserNoLogged(props) {
   const { navigation } = props
 
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Icon type="material-community" name="alert-outline" size={50} />
-      <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
+    <View style={styles.textAlertContainer}>
+      <Icon
+        type="material-community" 
+        name="alert-outline" 
+        size={50} 
+        iconStyle={styles.iconAlert}
+      />
+      <Text style={styles.textAlertLogin}>
         Necesitas estar logeado para ver esta sección
       </Text>
       <Button
         title="Ir al login"
-        containerStyle={{ marginTop: 20, width: "80%" }}
-        buttonStyle={{ backgroundColor: "#00a680" }}
+        containerStyle={styles.btnContainerLogin}
+        buttonStyle={styles.btnLogin}
         onPress={() => navigation.navigate("account", { screen: "login" })}
       />
     </View>
@@ -141,7 +148,7 @@ function Restaurant(props) {
     setReloadData,
     navigation,
   } = props
-  const { id, name, images } = restaurant.item
+  const { id, name, images, restaurantName } = restaurant.item
 
   const confirmRemoveFavorite = () => {
     Alert.alert(
@@ -211,11 +218,14 @@ function Restaurant(props) {
           <Icon
             type="material-community"
             name="heart"
-            color="#f00"
+            color="#F9F9F9"
             containerStyle={styles.favorite}
             onPress={confirmRemoveFavorite}
             underlayColor="transparent"
           />
+        </View>
+        <View style={styles.infoRestaurant}>
+          <Text style={styles.restaurantName}>{restaurantName}</Text>
         </View>
       </TouchableOpacity>
     </View>
@@ -233,7 +243,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     restaurant: {
-        margin: 10
+        margin: 10,
     },
     image: {
         width: "100%",
@@ -247,18 +257,54 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         paddingTop: 10,
-        paddingBottom: 10,
+        paddingBottom: 5,
         marginTop: -30,
+        backgroundColor: "#fff"
+    },
+    infoRestaurant: {
+      flex: 1,
+        alignItems: "center",
+        flexDirection: "row",
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingBottom: 10,
         backgroundColor: "#fff"
     },
     name: {
        fontWeight: "bold",
        fontSize: 20 
     },
+    restaurantName: {
+      fontWeight: "bold",
+      color: "grey",
+    },
     favorite: {
         marginTop: -35,
-        backgroundColor: "#fff",
+        backgroundColor: "rgba(240, 29, 73, 0.7)",
         padding: 15,
         borderRadius: 100
+    },
+    btnContainerLogin: {
+      marginTop: 20,
+      width: "80%"
+    },
+    btnLogin: {
+      backgroundColor: "#08A6D0",
+      borderRadius: 10,
+    },
+    textAlertLogin: {
+      fontSize: 15,
+      fontWeight: "bold",
+      textAlign: "center",
+      marginBottom: 40,
+      marginTop: 10,
+    },
+    textAlertContainer: {
+      flex: 1, 
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    iconAlert: {
+      color: "#08A6D0"
     }
 })

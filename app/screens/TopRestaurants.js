@@ -14,12 +14,10 @@ export default function TopRestaurants(props) {
     const [restaurants, setRestaurants] = useState([])
     const toastRef = useRef()
 
-    console.log(restaurants)
-
     useEffect(() => {
         db.collection("restaurants")
             .orderBy("rating", "desc")
-            .limit(5)
+            .limit(10)
             .get()
             .then((response) => {
                 const restaurantArray = []

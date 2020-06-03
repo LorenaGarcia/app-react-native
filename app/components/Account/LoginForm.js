@@ -46,7 +46,7 @@ export default function LoginForm(props) {
     return (
         <View style={styles.formContainer}>
             <Input
-                placeholder="Correo electronico"
+                placeholder="Correo electrónico"
                 containerStyle={styles.inputForm}
                 onChange={(e) => onChange(e, "email")}
                 rightIcon={
@@ -107,6 +107,9 @@ const styles = StyleSheet.create({
     },
     btnLogin: {
         backgroundColor: "#08A6D0",
-        borderRadius: 10,
+        borderRadius: 10
+    },
+    iconRight: {
+        color: "#000000"
     }
 })

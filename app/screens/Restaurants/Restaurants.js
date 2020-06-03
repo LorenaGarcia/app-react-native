@@ -85,11 +85,11 @@ export default function Restaurants(props) {
                 isLoading={isLoading}
             />
             {user && (
-                <Icon
-                reverse
+            <Icon
+            reverse
                 type="material-community"
-                name="plus"
-                color="#08A6D0"
+                name="camera-plus-outline"
+                color="#09AC10"
                 containerStyle={styles.btnContainer}
                 onPress={() => navigation.navigate('add-restaurant')}
             />
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         bottom: 10,
         right: 10,
         shadowColor: "black",
-        shadowOffset: { width: 2, height: 2 },
-        shadowOpacity: 0.5
+        shadowOffset: { width: 8, height: 8 },
+        shadowOpacity: 0.6,
     }
 })

@@ -7,7 +7,7 @@ import {
     ActivityIndicator,
     TouchableOpacity
 } from "react-native"
-import { Image } from "react-native-elements"
+import { Image, Icon } from "react-native-elements"
 import { size } from "lodash"
 import { useNavigation } from "@react-navigation/native"
 
@@ -19,6 +19,7 @@ export default function ListRestaurants(props){
         <View>
             {size(restaurants) > 0 ? (
                 <FlatList
+                    numColumns={3}
                     data={restaurants}
                     renderItem={ (restaurant) => <Restaurant restaurant={restaurant} navigation={navigation} />}
                     keyExtractor={(item, index) => index.toString()}
@@ -29,7 +30,7 @@ export default function ListRestaurants(props){
             ) : (
                 <View style={styles.loaderRestaurants}>
                     <ActivityIndicator size="large" />
-                    <Text>Cargando restaurantes</Text>
+                    <Text>Cargando platillos</Text>
                 </View>
             )}
         </View>
@@ -38,7 +39,7 @@ export default function ListRestaurants(props){
 
 function Restaurant(props) {
     const { restaurant, navigation } = props
-    const { id, images, name, address, description } = restaurant.item
+    const { id, images, name, address, restaurantName } = restaurant.item
     const imageRestaurant = images ? images[0] : null
 
     const goRestaurant = () => {
@@ -49,10 +50,9 @@ function Restaurant(props) {
     }
     
     return (
-        <TouchableOpacity onPress={goRestaurant}>
-            <View style={styles.viewRestaurant}>
-                <View style={styles.viewRestaurantImage}>
-                    <Image
+        <TouchableOpacity onPress={goRestaurant} style={styles.container}>
+            <View style={styles.viewImages}>
+            <Image
                         resizeMode="cover"
                         PlaceholderContent={<ActivityIndicator color="#fff" />}
                         source={
@@ -62,11 +62,11 @@ function Restaurant(props) {
                         }
                         style={styles.imageRestaurant}
                     />
-                </View>
-                <View>
-                    <Text style={styles.restaurantName}>{name}</Text>
-                    <Text style={styles.restaurantAddress}>{address}</Text>
-                    <Text style={styles.restaurantDescription}>{description.substr(0, 60)}...</Text>
+                <View style={styles.viewTextImage}>
+                    <View style={styles.containerText}>
+                        <Text style={styles.restaurantName}>{size(name) >= 30 ? name.substr(0, 30)+'...' : name}</Text>
+                        <Text style={styles.restaurantAddress}>{restaurantName}</Text>
+                    </View>
                 </View>
             </View>
         </TouchableOpacity>
@@ -79,19 +79,40 @@ function FooterList(props) {
     if(isLoading) {
         return (
             <View style={styles.loaderRestaurants}>
-                <ActivityIndicator size="large" />
+                <ActivityIndicator size="large" color="#08A6D0" />
             </View>
         )
     } else {
         return (
+            
             <View style={styles.notFoundRestaurants}>
-                <Text>No quedan restaurantes por cargar</Text>
+                <Text style={styles.textNotFound}>No quedan más platillos por cargar</Text>
             </View>
         )
     }
 }
 
+
+
 const styles = StyleSheet.create({
+    container: {
+        justifyContent: "center",
+        flex: 1,
+    },
+    viewImages:{
+        margin: 1,
+    },
+    viewTextImage: {
+        position: "absolute",
+        bottom: 0,
+        zIndex: 1,
+        backgroundColor: "rgba(10,10,10,0.6)",
+        width: "100%",
+        maxHeight: 80
+    },
+    containerText: {
+        margin: 2
+    },
     loaderRestaurants: {
         marginTop:10,
         marginBottom: 10,
@@ -105,15 +126,18 @@ const styles = StyleSheet.create({
       marginRight: 15,  
     },
     imageRestaurant: {
-        width: 80,
-        height: 80,
+        width: "100%",
+        height: 250,
     },
     restaurantName: {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        color: "#D7D7D7",
+        marginLeft: 2
     },
     restaurantAddress: {
         paddingTop: 2,
-        color: "grey",
+        color: "#D7D7D7",
+        marginLeft: 1
     },
     restaurantDescription: {
         paddingTop: 2,
@@ -121,8 +145,11 @@ const styles = StyleSheet.create({
         width: 300,
     },
     notFoundRestaurants: {
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 20,
-        alignItems: "center"
+        alignItems: "center",
+    },
+    textNotFound: {
+        color: "grey",
     }
 })

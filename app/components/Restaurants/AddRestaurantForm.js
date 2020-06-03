@@ -25,6 +25,7 @@ const windthScreen = Dimensions.get("window").width
 export default function AddRestaurantForm(props) {
     const { toastRef, setIsLoading, navigation } = props
     const [restaurantName, setRestaurantName] = useState("")
+    const [footName, setFootName] = useState("")
     const [restaurantAddress, setRestaurantAddress] = useState("")
     const [restaurantDescription, setRestaurantDescription] = useState("")
     const [imageSelected, setImageSelected] = useState([])
@@ -32,10 +33,10 @@ export default function AddRestaurantForm(props) {
     const [locationRestaurant, setLocationRestaurant] = useState(null)
 
     const addRestaurant = () => {
-        if(!restaurantName || !restaurantAddress || !restaurantDescription) {
+        if(!restaurantName || !restaurantAddress || !restaurantDescription || !footName) {
             toastRef.current.show("Todos los campos son obligatorios.")
         } else if(size(imageSelected) === 0) {
-            toastRef.current.show("Necesita almenos una foto.")
+            toastRef.current.show("Necesitas almenos una foto.")
         } else if(!locationRestaurant) {
             toastRef.current.show("Tienes que localizar el restaurant en el mapa.")
         } else {
@@ -43,7 +44,8 @@ export default function AddRestaurantForm(props) {
             uploadImageStorage().then((response) => {
                 db.collection("restaurants")
                     .add({
-                        name: restaurantName,
+                        name: footName,
+                        restaurantName: restaurantName,
                         address: restaurantAddress,
                         description: restaurantDescription,
                         location: locationRestaurant,
@@ -60,7 +62,7 @@ export default function AddRestaurantForm(props) {
                     }).catch(() => {
                         setIsLoading(false)
                         toastRef.current.show(
-                            "Error al subir el restaurante, intentelo más tarde"
+                            "Error al subir el platillo, intentelo más tarde"
                         )
                     })
             })
@@ -96,6 +98,7 @@ export default function AddRestaurantForm(props) {
             <ImageRestaurant imageRestaurant={imageSelected[0]} />
             <FormAdd
                 setRestaurantName={setRestaurantName}
+                setFootName={setFootName}
                 setRestaurantAddress={setRestaurantAddress}
                 setRestaurantDescription={setRestaurantDescription}
                 setIsVisibleMap={setIsVisibleMap}
@@ -107,7 +110,7 @@ export default function AddRestaurantForm(props) {
                 setImageSelected={setImageSelected} 
             />
             <Button 
-                title="Crea Restaurante" 
+                title="Añadir Platillo" 
                 onPress={addRestaurant}
                 buttonStyle={styles.btnAddRestaurant}
             />
@@ -124,6 +127,7 @@ export default function AddRestaurantForm(props) {
 function FormAdd(props) {
     const {
         setRestaurantName,
+        setFootName,
         setRestaurantAddress,
         setRestaurantDescription,
         setIsVisibleMap,
@@ -133,23 +137,29 @@ function FormAdd(props) {
     return (
         <View style={styles.viewForm}>
             <Input
+                placeholder="Nombre del platillo"
+                containerStyle={styles.input}
+                onChange={(e) => setFootName(e.nativeEvent.text)}
+            />
+            <Input
                 placeholder="Nombre del restaurante"
                 containerStyle={styles.input}
                 onChange={(e) => setRestaurantName(e.nativeEvent.text)}
             />
             <Input
-                placeholder="Dirección"
+                placeholder="Estado"
                 containerStyle={styles.input}
                 onChange={(e) => setRestaurantAddress(e.nativeEvent.text)}
                 rightIcon={{
                     type: "material-community",
-                    name: "google-maps",
+                    name: "map-marker-plus",
+                    size: 35,
                     color: locationRestaurant ? "#08A6D0" : "#c2c2c2",
                     onPress: () => setIsVisibleMap(true)
                 }}
             />
             <Input
-                placeholder="Descripción del restaurante"
+                placeholder="Descripción del platillo"
                 multiline={true}
                 inputContainerStyle={styles.textArea}
                 onChange={(e) => setRestaurantDescription(e.nativeEvent.text)}
@@ -307,7 +317,8 @@ function UploadImage(props) {
             {size(imageSelected) < 5 && (
                 <Icon
                 type="material-community"
-                name="camera"
+                name="image-plus"
+                size={30}
                 color="#7a7a7a"
                 containerStyle={styles.containerIcon}
                 onPress={imageSelect}

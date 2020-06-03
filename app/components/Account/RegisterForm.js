@@ -47,7 +47,7 @@ export default function RegisterForm(props) {
     return (
         <View style={styles.formContainer}>
             <Input
-                placeholder="Correo electronico"
+                placeholder="Correo electrónico"
                 containerStyle={styles.inputForm}
                 onChange={e => onChange(e, "email")}
                 rightIcon={
@@ -89,12 +89,12 @@ export default function RegisterForm(props) {
                 }
             />
             <Button
-                title="Unirse"
+                title="Registrarse"
                 containerStyle={styles.btnContainerRegister}
                 buttonStyle={styles.btnRegister}
                 onPress={onSubmit}
             />
-            <Loading isVisible={loading} text="Creando cuenta" />
+            <Loading isVisible={loading} text="Creando usuario" />
         </View>
     )
 }
@@ -127,6 +127,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
     },
     iconRight: {
-        color: "#c1c1c1",
+        color: "#000000",
     }
 })
