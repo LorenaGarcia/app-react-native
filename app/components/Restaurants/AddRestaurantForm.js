@@ -326,22 +326,22 @@ function UploadImage(props) {
             )}
             
             {map(imageSelected, (imageRestaurant, index) => (
-                <>
+            <View key={index}>
                 <Avatar
                     key={index}
                     style={styles.miniatureStyle}
                     source={{ uri: imageRestaurant }}
                     onPress={() => removeImage(imageRestaurant)}
                 />
-                {/* <Icon
+                <Icon
                     type="material-community"
-                    name="image-plus"
-                    size={10}
-                    color="#7a7a7a"
-                    containerStyle={styles.containerIcon}
-                    onPress={imageSelect}
-                /> */}
-            </>
+                    name="close"
+                    color="#F9F9F9"
+                    containerStyle={styles.favorite}
+                    underlayColor="transparent"
+                    onPress={() => removeImage(imageRestaurant)}
+                />
+            </View>
             ))}
         </View>
     )
@@ -417,5 +417,11 @@ const styles = StyleSheet.create({
     viewMapBtnSave: {
         backgroundColor: "#42A142",
         borderRadius: 10,
-    }
+    },
+    favorite: {
+        marginTop: -80,
+        alignItems: "flex-end",
+        padding: 10,
+        borderRadius: 100
+    },
 })

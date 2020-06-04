@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     },
     imageRestaurant: {
         width: "100%",
-        height: 180,
+        height: 170,
     },
     restaurantName: {
         fontWeight: "bold",
