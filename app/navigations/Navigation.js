@@ -12,10 +12,6 @@ const Tab = createBottomTabNavigator()
 
 export default function Navigation() {
 
-    const colorIcon = () => {
-       console.log('aaa')
-    }
-
     return (
         <NavigationContainer>
             <Tab.Navigator
@@ -64,7 +60,6 @@ export default function Navigation() {
 
 
 function screenOptions(route, color, focused) {
-console.log(focused)
     let iconName
 
     switch (route.name) {

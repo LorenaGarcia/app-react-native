@@ -79,7 +79,7 @@ function FooterList(props) {
     if(isLoading) {
         return (
             <View style={styles.loaderRestaurants}>
-                <ActivityIndicator size="large" color="#08A6D0" />
+                <ActivityIndicator size="large" color="#42A142" />
             </View>
         )
     } else {
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     },
     imageRestaurant: {
         width: "100%",
-        height: 250,
+        height: 180,
     },
     restaurantName: {
         fontWeight: "bold",

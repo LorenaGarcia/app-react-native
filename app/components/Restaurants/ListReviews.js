@@ -46,7 +46,7 @@ export default function ListReviews(props) {
                     icon={{
                         type: "material-community",
                         name: "square-edit-outline",
-                        color: "#08A6D0"
+                        color: "#42A142"
                     }}
                     onPress={() => navigation.navigate("add-review-restaurant", {
                         idRestaurant: idRestaurant
@@ -110,11 +110,11 @@ const styles = StyleSheet.create({
         backgroundColor: "transparent"
     },
     btnTitleAddReview : {
-       color: "#08A6D0" 
+       color: "#42A142" 
     },
     textNoLogged: {
         textAlign: "center",
-        color: "#08A6D0",
+        color: "#42A142",
         padding: 20,
     },
     textNoLoggedClick: {

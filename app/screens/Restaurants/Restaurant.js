@@ -201,7 +201,7 @@ function RestaurantInfo(props) {
                     leftIcon={{
                         name: item.iconName,
                         type: item.iconType,
-                        color: "#08A6D0"
+                        color: "#42A142"
                     }}
                     containerStyle={styles.containerListItem}
                 />

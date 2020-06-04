@@ -89,7 +89,7 @@ export default function Restaurants(props) {
             reverse
                 type="material-community"
                 name="camera-plus-outline"
-                color="#09AC10"
+                color="#42A142"
                 containerStyle={styles.btnContainer}
                 onPress={() => navigation.navigate('add-restaurant')}
             />

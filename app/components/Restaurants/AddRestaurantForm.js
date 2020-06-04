@@ -154,7 +154,7 @@ function FormAdd(props) {
                     type: "material-community",
                     name: "map-marker-plus",
                     size: 35,
-                    color: locationRestaurant ? "#08A6D0" : "#c2c2c2",
+                    color: locationRestaurant ? "#42A142" : "#c2c2c2",
                     onPress: () => setIsVisibleMap(true)
                 }}
             />
@@ -245,13 +245,13 @@ function Map(props) {
                 )}
                 <View style={styles.viewMapBtn}>
                     <Button
-                        title="Guardar Ubicación"
+                        title="Guardar"
                         containerStyle={styles.viewMapBtnContainerSave}
                         buttonStyle={styles.viewMapBtnSave}
                         onPress={confirmLocation}
                     />
                     <Button 
-                        title="Cancelar Ubicación" 
+                        title="Cancelar" 
                         containerStyle={styles.viewMapBtnContainerCancel}
                         buttonStyle={styles.viewMapBtnCancel}
                         onPress={() => setIsVisibleMap(false)}
@@ -315,7 +315,7 @@ function UploadImage(props) {
     return (
         <View style={styles.viewImages}>
             {size(imageSelected) < 5 && (
-                <Icon
+            <Icon
                 type="material-community"
                 name="image-plus"
                 size={30}
@@ -326,12 +326,22 @@ function UploadImage(props) {
             )}
             
             {map(imageSelected, (imageRestaurant, index) => (
+                <>
                 <Avatar
                     key={index}
                     style={styles.miniatureStyle}
                     source={{ uri: imageRestaurant }}
                     onPress={() => removeImage(imageRestaurant)}
                 />
+                {/* <Icon
+                    type="material-community"
+                    name="image-plus"
+                    size={10}
+                    color="#7a7a7a"
+                    containerStyle={styles.containerIcon}
+                    onPress={imageSelect}
+                /> */}
+            </>
             ))}
         </View>
     )
@@ -355,7 +365,7 @@ const styles = StyleSheet.create({
         margin: 0,
     },
     btnAddRestaurant: {
-        backgroundColor: "#08A6D0",
+        backgroundColor: "#42A142",
         borderRadius: 10,
         margin: 20,
     },
@@ -394,6 +404,7 @@ const styles = StyleSheet.create({
     },
     viewMapBtnContainerCancel: {
         paddingLeft: 5,
+        width: "50%"
     },
     viewMapBtnCancel: {
         backgroundColor: "#a60d0d",
@@ -401,9 +412,10 @@ const styles = StyleSheet.create({
     },
     viewMapBtnContainerSave: {
         paddingRight: 5,
+        width: "50%"
     },
     viewMapBtnSave: {
-        backgroundColor: "#08A6D0",
+        backgroundColor: "#42A142",
         borderRadius: 10,
     }
 })

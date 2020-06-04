@@ -15,11 +15,10 @@ export default function RestaurantsStack() {
             <Stack.Screen
                 name="restaurants"
                 component={Restaurants}
-                // options={{ title: "Platillos" }}
                 options={{
-                    title: "",
+                    title: " ",
                     headerTintColor: 'white', 
-                    header: props => <ImageHeader {...props} />,
+                    header: props => <Header {...props} />,
                   }}
             />
             <Stack.Screen
@@ -43,11 +42,11 @@ export default function RestaurantsStack() {
 
 
 
-const ImageHeader = props => (
-    <View style={{ backgroundColor: 'transparent'}}>
+const Header = props => (
+    <View style={{ backgroundColor: "transparent" }}>
       <Image
         style={{width: "100%", height: 90, position: 'absolute', top: 0, left: 0}}
-        source={ require("../../assets/img/header.jpg") }
+        source={ require("../../assets/img/header-green.jpg") }
         resizeMode="cover"
       />
     </View>

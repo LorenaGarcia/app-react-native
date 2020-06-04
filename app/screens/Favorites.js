@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
     },
     favorite: {
         marginTop: -35,
-        backgroundColor: "rgba(240, 29, 73, 0.7)",
+        backgroundColor: "rgba(240, 29, 73, 1)",
         padding: 15,
         borderRadius: 100
     },
@@ -289,7 +289,7 @@ const styles = StyleSheet.create({
       width: "80%"
     },
     btnLogin: {
-      backgroundColor: "#08A6D0",
+      backgroundColor: "#42A142",
       borderRadius: 10,
     },
     textAlertLogin: {
@@ -305,6 +305,6 @@ const styles = StyleSheet.create({
       justifyContent: "center"
     },
     iconAlert: {
-      color: "#08A6D0"
+      color: "#42A142"
     }
 })
