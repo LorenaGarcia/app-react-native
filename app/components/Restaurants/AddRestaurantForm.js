@@ -110,7 +110,7 @@ export default function AddRestaurantForm(props) {
                 setImageSelected={setImageSelected} 
             />
             <Button 
-                title="Añadir Platillo" 
+                title="Añadir" 
                 onPress={addRestaurant}
                 buttonStyle={styles.btnAddRestaurant}
             />
@@ -337,7 +337,7 @@ function UploadImage(props) {
                     type="material-community"
                     name="close"
                     color="#F9F9F9"
-                    containerStyle={styles.favorite}
+                    containerStyle={styles.iconDelete}
                     underlayColor="transparent"
                     onPress={() => removeImage(imageRestaurant)}
                 />
@@ -418,7 +418,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#42A142",
         borderRadius: 10,
     },
-    favorite: {
+    iconDelete: {
         marginTop: -80,
         alignItems: "flex-end",
         padding: 10,

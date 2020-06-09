@@ -24,7 +24,12 @@ export default function RestaurantsStack() {
             <Stack.Screen
                 name="add-restaurant"
                 component={AddRestaurant}
-                options={{ title: "Añadir nuevo platillo" }}
+                options={{
+                    title: " ",
+                    headerTintColor: 'white', 
+                    header: props => <Header home={false} {...props} />,
+                  }}
+                // options={{ title: "Añadir nuevo platillo" }}
             />
             <Stack.Screen
                 name="restaurant"
@@ -42,7 +47,7 @@ export default function RestaurantsStack() {
 
 
 
-const Header = props => (
+const Header = (props, home) => (
     <View style={{ backgroundColor: "transparent" }}>
       <Image
         style={{width: "100%", height: 90, position: 'absolute', top: 0, left: 0}}
