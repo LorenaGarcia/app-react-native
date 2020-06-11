@@ -27,7 +27,7 @@ export default function RestaurantsStack() {
                 options={{
                     title: " ",
                     headerTintColor: 'white', 
-                    header: props => <Header home={false} {...props} />,
+                    header: props => <Header {...props} />,
                   }}
                 // options={{ title: "Añadir nuevo platillo" }}
             />
@@ -47,10 +47,10 @@ export default function RestaurantsStack() {
 
 
 
-const Header = (props, home) => (
+const Header = (props) => (
     <View style={{ backgroundColor: "transparent" }}>
       <Image
-        style={{width: "100%", height: 90, position: 'absolute', top: 0, left: 0}}
+        style={{width: "100%", height: 90, top: 0, left: 0}}
         source={ require("../../assets/img/header-green.jpg") }
         resizeMode="cover"
       />

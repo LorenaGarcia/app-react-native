@@ -16,7 +16,7 @@ export default function Restaurants(props) {
     const [totalRestaurants, setTotalRestaurants] = useState(0)
     const [startRestaurants, setStartRestaurants] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
-    const limitRestaurants = 7
+    const limitRestaurants = 10
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged((userInfo) => {
